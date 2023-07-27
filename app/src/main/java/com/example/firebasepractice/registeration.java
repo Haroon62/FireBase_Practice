@@ -15,12 +15,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class registeration extends AppCompatActivity {
     TextInputLayout t1,t2;
@@ -67,7 +65,7 @@ public class registeration extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(registeration.this, "Registered Successfully.",
                                                 Toast.LENGTH_SHORT).show();
-                                        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                                        Intent intent=new Intent(getApplicationContext(), Home.class);
                                         startActivity(intent);
                                         finish();
                                     } else {

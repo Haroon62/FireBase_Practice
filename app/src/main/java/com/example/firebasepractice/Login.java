@@ -1,14 +1,13 @@
 package com.example.firebasepractice;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +50,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.login);
         google=findViewById(R.id.google);
         facebook=findViewById(R.id.facebook);
         t1=findViewById(R.id.email);
@@ -94,6 +93,15 @@ public class Login extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                SharedPreferences preferences=getSharedPreferences("login",MODE_PRIVATE);
+                SharedPreferences.Editor editor=preferences.edit();
+                editor.putBoolean("flag",true);
+                editor.apply();
+
+
+
+
                 String email=t1.getEditText().getText().toString();
                 String pass=t2.getEditText().getText().toString();
 
@@ -113,7 +121,7 @@ else {   progressBar.setVisibility(View.VISIBLE);
                                     if (task.isSuccessful()) {
                                         Toast.makeText(Login.this, "Login Successfully.",
                                                 Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        Intent intent = new Intent(getApplicationContext(), Home.class);
                                         startActivity(intent);
                                         finish();
                                     } else {
@@ -156,7 +164,7 @@ else {   progressBar.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(Login.this, "Login Successfully.",
                             Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
                     startActivity(intent);
                     finish();
                 } else {
