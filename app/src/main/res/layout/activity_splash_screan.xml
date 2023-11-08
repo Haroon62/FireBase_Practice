@@ -4,15 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/backgorund"
 
     tools:context=".Splash_screan">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile_login"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="App Name"
-        android:textColor="@color/white"
+        android:text="FireBase App"
+        android:textColor="#3C5D9F"
+        android:fontFamily="serif"
         android:textAlignment="center"
         android:textSize="50dp"
         android:textStyle="bold"
